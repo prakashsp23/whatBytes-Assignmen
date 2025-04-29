@@ -2,8 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
-import Sidebar from '@/components/layout/Sidebar';
-import Header from '@/components/layout/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,18 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          suppressHydrationWarning
         >
-              {/* <Header /> */}
-              <main className="flex-1 overflow-y-auto bg-background border-l-2">
-                {children}
-              </main>
+          <main className="flex-1 overflow-y-auto bg-background border-l-2">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

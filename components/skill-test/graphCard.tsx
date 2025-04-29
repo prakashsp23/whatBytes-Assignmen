@@ -82,13 +82,31 @@ export default function ComparisonGraph() {
                 stroke="#8884d8"
                 strokeWidth={2}
                 dot={(props) => {
-                  const { cx, cy, payload } = props
+                  const { cx, cy, payload, index } = props
 
                   if (payload.isHighlighted) {
-                    return <circle cx={cx} cy={cy} r={6} fill="#6366f1" stroke="none" />
+                    return (
+                      <circle
+                        key={`dot-${index}`}
+                        cx={cx}
+                        cy={cy}
+                        r={6}
+                        fill="#6366f1"
+                        stroke="none"
+                      />
+                    )
                   }
 
-                  return <circle cx={cx} cy={cy} r={3} fill="#8884d8" stroke="none" />
+                  return (
+                    <circle
+                      key={`dot-${index}`}
+                      cx={cx}
+                      cy={cy}
+                      r={3}
+                      fill="#8884d8"
+                      stroke="none"
+                    />
+                  )
                 }}
               />
               <ReferenceLine
